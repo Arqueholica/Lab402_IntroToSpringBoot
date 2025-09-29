@@ -2,7 +2,7 @@ package com.ironhack.Lab402_IntroToSpringBoot.model;
 
 import jakarta.persistence.*;
 
-import java.text.DateFormat;
+import java.time.LocalDate;
 
 @Entity
 public class Patient {
@@ -12,10 +12,11 @@ private Integer patient_id;
 
 private String p_name;
 
-private DateFormat p_dateOfBirth;
+private LocalDate p_dateOfBirth;
 
-
-private Integer admitted_by;
+@ManyToOne
+@JoinColumn(name = "admitted_by", referencedColumnName = "employee_id")
+private Employee admitted_by;
 
 
 public Patient() {
@@ -37,22 +38,19 @@ public Patient() {
         this.p_name = p_name;
     }
 
-    public DateFormat getP_dateOfBirth() {
+    public LocalDate getP_dateOfBirth() {
         return p_dateOfBirth;
     }
 
-    public void setP_dateOfBirth(DateFormat p_dateOfBirth) {
+    public void setP_dateOfBirth(LocalDate p_dateOfBirth) {
         this.p_dateOfBirth = p_dateOfBirth;
     }
 
-    public Integer getAdmitted_by() {
+    public Employee getAdmitted_by() {
         return admitted_by;
     }
 
-    public void setAdmitted_by(Integer admitted_by) {
+    public void setAdmitted_by(Employee admitted_by) {
         this.admitted_by = admitted_by;
     }
-
-
-
 }

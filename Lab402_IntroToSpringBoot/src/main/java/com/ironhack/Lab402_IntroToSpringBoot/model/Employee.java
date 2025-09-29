@@ -1,13 +1,11 @@
 package com.ironhack.Lab402_IntroToSpringBoot.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+
 
 public class Employee {
 @Id
@@ -19,6 +17,7 @@ private String e_name;
 @Enumerated(EnumType.STRING)
 private employee_STATUS status;
 
+@OneToMany(mappedBy = "admitted_by")
 private List<Patient> patientList;
 
 
