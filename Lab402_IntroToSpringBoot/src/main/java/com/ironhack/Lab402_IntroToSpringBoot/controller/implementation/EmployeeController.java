@@ -35,13 +35,13 @@ public class EmployeeController implements IntEmployeeController {
         return myEmployee;
     }
 
-    @GetMapping
-    public List<Employee> getDoctorByStatus(employee_STATUS status) {
-        return employeeRepository.findByStatus(employee_STATUS.valueOf(String.valueOf(status)));
+    @GetMapping("/{status}")
+    public List<Employee> getDoctorByStatus(@PathVariable(name = "status") employee_STATUS status) {
+        return employeeRepository.findByStatus(status);
     }
 
-
-    public List<Employee> getDoctorsByDepartment(String department) {
-        return List.of();
+    @GetMapping("/{department}")
+    public List<Employee> getDoctorsByDepartment(@PathVariable(name = "department") String department) {
+        return employeeRepository.findByDepartment(department);
     }
 }
